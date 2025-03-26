@@ -344,6 +344,27 @@ namespace EnigmaMachine_IP_Prelim
         // Handle plugboard button click
         private void btnSetPlugboard_Click(object sender, RoutedEventArgs e)
         {
+            string input = txtPlugboard.Text.ToUpper();
+            bool isValid = false;
+            foreach (char c in input)
+            {
+                if (c > 'A' && c < 'Z' || c == ' ')
+                {
+                    isValid = true;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (txtPlugboard.Text != "")
+            {
+                if (!isValid)
+                {
+                    MessageBox.Show("Invalid output for Plugboard.");
+                    return;
+                }
+            }
+
             if (_plugboardSet)
             {
                 MessageBox.Show("Plugboard is already set.");
@@ -369,5 +390,67 @@ namespace EnigmaMachine_IP_Prelim
             lblEncrpytMirror.Content = "";
         }
 
+        private void txtBRing1Init_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string input = txtBRing1Init.Text;
+            bool isValid = false;
+            foreach (char c in input)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    isValid = true;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show("Invalid output for offset H.");
+                return;
+            }
+        }
+
+        private void txtBRing2Init_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string input = txtBRing2Init.Text;
+            bool isValid = false;
+            foreach (char c in input)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    isValid = true;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show("Invalid output for offset M.");
+                return;
+            }
+        }
+
+        private void txtBRing3Init_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string input = txtBRing3Init.Text;
+            bool isValid = false;
+            foreach (char c in input)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    isValid = true;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show("Invalid output for offset S.");
+                return;
+            }
+        }
     }
 }
